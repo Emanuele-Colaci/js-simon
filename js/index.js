@@ -2,7 +2,6 @@
 
 let punteggio = document.getElementById('punteggio');
 let risultato = document.getElementById('risultato');
-let timer = document.getElementById('timer');
 let second = 30;
 numeriCasuali = [];
 //FUNZIONI
@@ -21,7 +20,8 @@ function nascondiNumeriCasuali() {
 }
 
 let interval = setInterval(function(){
-    document.getElementById('timer').innerText = second;
+    let timer = document.getElementById('timer');
+    timer.innerHTML = `Ti restano a disposizione: <span style="color: #bd0004;">${second}</span> secondi prima che i numeri scompaiano <i class="fa-solid fa-face-flushed" style="color: #bd0004;"></i>`;
     if(second === 0){
         clearInterval(interval);
         confrontaNumeriInseriti();
