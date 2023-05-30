@@ -3,9 +3,8 @@
 let punteggio = document.getElementById('punteggio');
 let risultato = document.getElementById('risultato');
 let timer = document.getElementById('timer');
-let second = 2;
-let numeriCasuali = [];
-
+let second = 30;
+numeriCasuali = [];
 //FUNZIONI
 
 function numeroRandom(){
@@ -14,14 +13,18 @@ function numeroRandom(){
         numeriCasuali.push(numeroRandom);
     }
     punteggio.innerText = "Numeri casuali: " + numeriCasuali.join(', ');
+    setTimeout(nascondiNumeriCasuali, 30000);
 };
+
+function nascondiNumeriCasuali() {
+    punteggio.innerText = "Numeri casuali: ";
+}
 
 let interval = setInterval(function(){
     document.getElementById('timer').innerText = second;
     if(second === 0){
         clearInterval(interval);
         confrontaNumeriInseriti();
-        punteggio.classList.add('d-none')
     }else{
         second--;
     }
@@ -29,7 +32,7 @@ let interval = setInterval(function(){
 
 //PROMPT PER L'UTENTE
 
-function confrontaNumeriInseriti() {
+function confrontaNumeriInseriti(){
     let numeriInseriti = [];
     numeriInseriti.push(parseInt(prompt('Inserisci il primo numero')));
     numeriInseriti.push(parseInt(prompt('Inserisci il secondo numero')));
